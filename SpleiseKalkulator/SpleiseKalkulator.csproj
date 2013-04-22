@@ -109,6 +109,8 @@
     <Compile Include="AddContactPage.xaml.cs">
       <DependentUpon>AddContactPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AddContactItemViewModel.cs" />
+    <Compile Include="ViewModels\AddContactViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
   </ItemGroup>
@@ -130,6 +132,10 @@
       <SubType>Designer</SubType>
     </DesignData>
     <Page Include="AddContactPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SampleData\AddContactViewModelSampleData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

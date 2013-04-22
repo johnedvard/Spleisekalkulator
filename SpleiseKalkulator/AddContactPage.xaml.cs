@@ -26,7 +26,11 @@ namespace SpleiseKalkulator.ViewModels
 
         private void Contacts_SearchCompleted(object sender, ContactsSearchEventArgs e)
         {
-            MessageBox.Show(e.Results.Count().ToString());
+            // MessageBox.Show(e.Results.Count().ToString());
+        }
+        private void LongListSelector_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -37,7 +37,7 @@
          -->
 
          <!--Panorama control-->
-        <phone:Panorama Title="Reiseplanlegger">
+        <phone:Panorama Title="IOUs">
             <phone:Panorama.Background>
                 <ImageBrush ImageSource="/SpleiseKalkulator;component/Assets/PanoramaBackground.png"/>
             </phone:Panorama.Background>
@@ -54,7 +54,7 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
-                                <TextBlock Text="Personer"
+                                <TextBlock Text="People"
                                            Style="{StaticResource PanoramaItemHeaderTextStyle}"
                                            Grid.Row="0"/>
                             </Grid>
