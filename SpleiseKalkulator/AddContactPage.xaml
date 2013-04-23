@@ -6,13 +6,17 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-     d:DataContext="{d:DesignData SampleData/AddContactViewModelSampleData.xaml}"
+    xmlns:MyApp="clr-namespace:SpleiseKalkulator.ViewModels"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="false">
+    
+    <phone:PhoneApplicationPage.Resources>
+        <MyApp:ContactPictureConverter x:Key="ContactPictureConverter" />
+    </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -20,32 +24,23 @@
             <phone:Panorama.Background>
                 <ImageBrush ImageSource="/SpleiseKalkulator;component/Assets/PanoramaBackground.png"/>
             </phone:Panorama.Background>
+            <StackPanel Orientation="Vertical">
 
-
-            <!--Panorama item two-->
-            <phone:PanoramaItem>
-                <!--Double line list with image placeholder and text wrapping using a floating header that scrolls with the content-->
-                <phone:LongListSelector Margin="0,-38,-22,2" ItemsSource="{Binding Items}" SelectionChanged="LongListSelector_SelectionChanged_1" HorizontalAlignment="Left" Width="442">
-                    <phone:LongListSelector.ListHeaderTemplate>
+                <ListBox Grid.Row="1" Name="ContactResultsData" ItemsSource="{Binding }" Height="544" Margin="24,24,0,0" VerticalAlignment="Top" Tap="ContactResultsData_Tap_1">
+                    <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="Select Contact" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" >
-
-                            </TextBlock>
-                        </DataTemplate>
-                    </phone:LongListSelector.ListHeaderTemplate>
-                    <phone:LongListSelector.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="2,2,0,4">
-                                <!--Replace rectangle with image-->
-                                <Image Source="{Binding ContactPicture}" Width="100" Height="100" HorizontalAlignment="Left"/>
-                                <TextBlock Text="{Binding ContactName}">
-                                    
-                                </TextBlock>
+                            <StackPanel Orientation="Horizontal" >
+                                <Border HorizontalAlignment="Left" >
+                                    <Image Source="{Binding Converter={StaticResource ContactPictureConverter}}" Width="100" Height="100" Stretch="Fill" />
+                                </Border>
+                                <TextBlock Name="ContactResults" Text="{Binding Path=DisplayName, Mode=OneWay}" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
                             </StackPanel>
                         </DataTemplate>
-                    </phone:LongListSelector.ItemTemplate>
-                </phone:LongListSelector>
-            </phone:PanoramaItem>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+
+
         </phone:Panorama>
 
     </Grid>

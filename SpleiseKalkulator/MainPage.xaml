@@ -42,7 +42,6 @@
                 <ImageBrush ImageSource="/SpleiseKalkulator;component/Assets/PanoramaBackground.png"/>
             </phone:Panorama.Background>
 
-
             <!--Panorama item two-->
             <phone:PanoramaItem>
                 <!--Double line list with image placeholder and text wrapping using a floating header that scrolls with the content-->
@@ -64,7 +63,7 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="2,2,0,4">
                                 <!--Replace rectangle with image-->
-                                <Image Source="{Binding ProfilePicture}" Width="100" Height="100" HorizontalAlignment="Left"/>
+                                <Image Name="P" Source="{Binding ProfilePicture}" Width="100" Height="100" HorizontalAlignment="Left"/>
                                 
                                     <StackPanel Margin="1,0,0,10" Orientation="Horizontal">
                                         <StackPanel Margin="8,8,0,0" HorizontalAlignment="Left">

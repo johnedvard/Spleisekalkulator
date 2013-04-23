@@ -11,8 +11,11 @@ using Microsoft.Phone.UserData;
 
 namespace SpleiseKalkulator
 {
+
+    
     public partial class MainPage : PhoneApplicationPage
     {
+        private Contact currentContact = null;
         private string addContactsPage = "/AddContactPage.xaml";
         // Constructor
         public MainPage()
@@ -26,6 +29,11 @@ namespace SpleiseKalkulator
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if(currentContact != DataContainer.contact){
+                currentContact = DataContainer.contact;
+                App.ViewModel.AddPerson(currentContact);
+                
+            }
             if (!App.ViewModel.IsDataLoaded)
             {
                 App.ViewModel.LoadData();

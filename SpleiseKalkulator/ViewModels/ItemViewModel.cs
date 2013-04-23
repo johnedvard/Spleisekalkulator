@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 
 namespace SpleiseKalkulator.ViewModels
 {
@@ -92,6 +93,26 @@ namespace SpleiseKalkulator.ViewModels
                 {
                     _profilePicture = value;
                     NotifyPropertyChanged("ProfilePicture");
+                }
+            }
+        }
+        private BitmapImage _p = null;
+        /// <summary>
+        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+        /// </summary>
+        /// <returns></returns>
+        public BitmapImage P
+        {
+            get
+            {
+                return _p;
+            }
+            set
+            {
+                if (value != _p)
+                {
+                    _p = value;
+                    NotifyPropertyChanged("P");
                 }
             }
         }

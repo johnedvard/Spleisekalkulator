@@ -2,6 +2,8 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using SpleiseKalkulator.Resources;
+using Microsoft.Phone.UserData;
+using System.Windows.Media.Imaging;
 
 namespace SpleiseKalkulator.ViewModels
 {
@@ -38,6 +40,10 @@ namespace SpleiseKalkulator.ViewModels
             }
         }
 
+        public void setHeader(string value)
+        {
+           
+        }
         /// <summary>
         /// Sample property that returns a localized string
         /// </summary>
@@ -73,6 +79,19 @@ namespace SpleiseKalkulator.ViewModels
         public void AddPerson(string profilePictureSource, string name)
         {
            this.Items.Add(new ItemViewModel() { ProfilePicture = "/Assets/renata_profil.jpg", LineOne = "asdasd", LineTwo = "her asdasd linje tre", LineThree = "jaja, asdasdasd tre" });
+        }
+        public void AddPerson(Contact contact)
+        {
+            ItemViewModel a = new ItemViewModel();
+            BitmapImage img = new BitmapImage();
+            System.IO.Stream imageStream = contact.GetPicture();
+         
+            img.SetSource(imageStream);
+            a.P = img;
+            
+            this.Items.Add(a);
+           
+
         }
 
 

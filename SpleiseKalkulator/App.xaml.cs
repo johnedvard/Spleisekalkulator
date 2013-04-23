@@ -16,7 +16,7 @@ namespace SpleiseKalkulator
     public partial class App : Application
     {
         private static MainViewModel viewModel = null;
-
+       
         /// <summary>
         /// A static ViewModel used by the views to bind against.
         /// </summary>
@@ -32,6 +32,8 @@ namespace SpleiseKalkulator
                 return viewModel;
             }
         }
+
+    
 
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
