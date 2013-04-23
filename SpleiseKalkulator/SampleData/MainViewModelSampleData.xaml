@@ -4,7 +4,7 @@
     xmlns:vm="clr-namespace:SpleiseKalkulator.ViewModels">
 
     <vm:MainViewModel.Items>
-        <vm:ItemViewModel ProfilePicture="/Assets/AppBar/add.png" P="/Assets/renata_profil.jpg"></vm:ItemViewModel>
+        <vm:ItemViewModel P="/Assets/renata_profil.jpg"></vm:ItemViewModel>
     </vm:MainViewModel.Items>
 
 </vm:MainViewModel>
