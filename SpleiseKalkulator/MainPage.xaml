@@ -63,7 +63,12 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="2,2,0,4">
                                 <!--Replace rectangle with image-->
-                                <Image Name="P" Source="{Binding ProfilePicture}" Width="100" Height="100" HorizontalAlignment="Left"/>
+                                <StackPanel Width="100" Height="100" HorizontalAlignment="Left">
+                                    <StackPanel.Background>
+                                        <ImageBrush ImageSource="{Binding P}" />
+                                    </StackPanel.Background>
+                                </StackPanel>
+                                <!-- <Image Name="P" Source="{Binding ProfilePicture}" Width="100" Height="100" HorizontalAlignment="Left"/>  -->
                                 
                                     <StackPanel Margin="1,0,0,10" Orientation="Horizontal">
                                         <StackPanel Margin="8,8,0,0" HorizontalAlignment="Left">

@@ -67,9 +67,9 @@ namespace SpleiseKalkulator.ViewModels
         public void LoadData()
         {
             // Sample data; replace with real data
-            this.Items.Add(new ItemViewModel() { ProfilePicture = "/Assets/renata_profil.jpg", LineOne = "Hallo", LineTwo = "her er linje tre", LineThree = "jaja, linje tre" });
-            this.Items.Add(new ItemViewModel() { ProfilePicture = "/Assets/renata_profil.jpg", LineOne = "Hallo", LineTwo = "her er linje tre", LineThree = "jaja, linje tre" });
-            this.Items.Add(new ItemViewModel() { ProfilePicture = "/Assets/renata_profil.jpg", LineOne = "Hallo", LineTwo = "her er linje tre", LineThree = "jaja, linje tre" });
+            //this.Items.Add(new ItemViewModel() { ProfilePicture = "/Assets/renata_profil.jpg", LineOne = "Hallo", LineTwo = "her er linje tre", LineThree = "jaja, linje tre" });
+            //this.Items.Add(new ItemViewModel() { ProfilePicture = "/Assets/renata_profil.jpg", LineOne = "Hallo", LineTwo = "her er linje tre", LineThree = "jaja, linje tre" });
+            //this.Items.Add(new ItemViewModel() { ProfilePicture = "/Assets/renata_profil.jpg", LineOne = "Hallo", LineTwo = "her er linje tre", LineThree = "jaja, linje tre" });
 
            
 
