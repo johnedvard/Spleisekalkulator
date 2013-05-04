@@ -11,5 +11,8 @@ namespace SpleiseKalkulator
     {
 
        public static Contact contact = null;
+       public static BitmapImage UPic = null;
+       public static BitmapImage IPic = null;
+
     }
 }

@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Phone.UserData;
+using System.Windows.Media.Imaging;
 
 namespace SpleiseKalkulator
 {
@@ -15,8 +16,14 @@ namespace SpleiseKalkulator
     
     public partial class MainPage : PhoneApplicationPage
     {
+        
+
         private Contact currentContact = null;
         private string addContactsPage = "/AddContactPage.xaml";
+        private string iouNotePage = "/IOUNote.xaml";
+
+       
+
         // Constructor
         public MainPage()
         {
@@ -38,8 +45,16 @@ namespace SpleiseKalkulator
             {
                 App.ViewModel.LoadData();
             }
+
+            
         }
 
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+           
+            base.OnBackKeyPress(e);
+
+        }
       
 
         private void AddPerson_Click(object sender, EventArgs e)
@@ -66,6 +81,27 @@ namespace SpleiseKalkulator
         private void LongListSelector_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void Button_Click_OweMe(object sender, RoutedEventArgs e)
+        {
+            ViewModels.ItemViewModel data = (sender as Button).DataContext as ViewModels.ItemViewModel;
+            DataContainer.UPic = data.P;
+            DataContainer.IPic =  null;
+            this.NavigationService.Navigate(new Uri(iouNotePage, UriKind.Relative));
+        }
+
+            
+        
+        private void Button_Click_IOwe(object sender, RoutedEventArgs e)
+        {
+
+            ViewModels.ItemViewModel data = (sender as Button).DataContext as ViewModels.ItemViewModel; ;
+            DataContainer.UPic = null;
+            DataContainer.IPic = data.P;
+            
+            this.NavigationService.Navigate(new Uri(iouNotePage, UriKind.Relative));
+            
         }
     }
 }

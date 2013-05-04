@@ -6,5 +6,5 @@
     <vm:MainViewModel.Items>
         <vm:ItemViewModel P="/Assets/renata_profil.jpg"></vm:ItemViewModel>
     </vm:MainViewModel.Items>
-
 </vm:MainViewModel>
+   

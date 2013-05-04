@@ -4,11 +4,17 @@ using System.ComponentModel;
 using SpleiseKalkulator.Resources;
 using Microsoft.Phone.UserData;
 using System.Windows.Media.Imaging;
+using System.IO.IsolatedStorage;
+using System.Collections.Generic;
+
 
 namespace SpleiseKalkulator.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
+        private IsolatedStorageSettings appSettings =
+            IsolatedStorageSettings.ApplicationSettings;
+
         public MainViewModel()
         {
             this.Items = new ObservableCollection<ItemViewModel>();
@@ -76,6 +82,8 @@ namespace SpleiseKalkulator.ViewModels
             this.IsDataLoaded = true;
         }
 
+       
+      
         public void AddPerson(string profilePictureSource, string name)
         {
            this.Items.Add(new ItemViewModel() { ProfilePicture = "/Assets/renata_profil.jpg"});
@@ -94,7 +102,6 @@ namespace SpleiseKalkulator.ViewModels
             else
                 img.SetSource(imageStream);
             a.P = img;
-            
             this.Items.Add(a);
            
 

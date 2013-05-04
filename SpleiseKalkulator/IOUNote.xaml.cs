@@ -15,6 +15,19 @@ namespace SpleiseKalkulator
         public IOUNote()
         {
             InitializeComponent();
+            DataContext = App.IOUNoteViewModel;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            
+                App.IOUNoteViewModel.IPic = DataContainer.IPic;
+            
+
+            
+                App.IOUNoteViewModel.UPic = DataContainer.UPic;
+            
+            
         }
     }
 }
