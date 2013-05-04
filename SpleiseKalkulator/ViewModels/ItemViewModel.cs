@@ -9,6 +9,8 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 
+
+
 namespace SpleiseKalkulator.ViewModels
 {
     public class ItemViewModel : INotifyPropertyChanged
@@ -83,10 +85,10 @@ namespace SpleiseKalkulator.ViewModels
         /// <returns></returns>
         public string ProfilePicture
         {
-               get
-               {
-                   return _profilePicture;
-               }
+            get
+            {
+                return _profilePicture;
+            }
             set
             {
                 if (value != _profilePicture)
@@ -112,7 +114,7 @@ namespace SpleiseKalkulator.ViewModels
                 if (value != _p)
                 {
                     _p = value;
-                    NotifyPropertyChanged("P");
+                   //NotifyPropertyChanged("PUUU");
                 }
             }
         }

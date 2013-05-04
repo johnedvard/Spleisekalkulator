@@ -78,7 +78,7 @@ namespace SpleiseKalkulator.ViewModels
 
         public void AddPerson(string profilePictureSource, string name)
         {
-           this.Items.Add(new ItemViewModel() { ProfilePicture = "/Assets/renata_profil.jpg", LineOne = "asdasd", LineTwo = "her asdasd linje tre", LineThree = "jaja, asdasdasd tre" });
+           this.Items.Add(new ItemViewModel() { ProfilePicture = "/Assets/renata_profil.jpg"});
         }
         public void AddPerson(Contact contact)
         {

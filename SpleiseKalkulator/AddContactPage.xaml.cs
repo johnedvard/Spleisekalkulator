@@ -67,9 +67,8 @@ namespace SpleiseKalkulator.ViewModels
         private void ContactResultsData_Tap_1(object sender, System.Windows.Input.GestureEventArgs e)
         {
             Contact c = (sender as ListBox).SelectedValue as Contact;
-            MessageBox.Show("tapped it: "+ c.DisplayName);
             DataContainer.contact = c;
-            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+            NavigationService.GoBack();
         }
       
 
