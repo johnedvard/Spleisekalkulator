@@ -68,6 +68,7 @@ namespace SpleiseKalkulator.ViewModels
         {
             Contact c = (sender as ListBox).SelectedValue as Contact;
             DataContainer.contact = c;
+             
             NavigationService.GoBack();
         }
       

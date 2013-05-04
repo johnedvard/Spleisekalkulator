@@ -72,8 +72,8 @@
                                 
                                     <StackPanel Margin="1,0,0,10" Orientation="Horizontal">
                                         <StackPanel Margin="8,8,0,0" HorizontalAlignment="Left">
-                                            <TextBlock Text="Skylder meg" TextWrapping="Wrap" Margin="10,0,10,15" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize='30' FontFamily="Buxton Sketch" HorizontalAlignment="Left" />
-                                            <TextBlock Text="Skylder andre" TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize='30' FontFamily="Buxton Sketch" HorizontalAlignment="Left" />
+                                            <TextBlock Text="Owe me" TextWrapping="Wrap" Margin="10,0,10,15" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize='30' FontFamily="Buxton Sketch" HorizontalAlignment="Left" />
+                                            <TextBlock Text="I owe " TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize='30' FontFamily="Buxton Sketch" HorizontalAlignment="Left" />
                                          </StackPanel>
                                     <StackPanel Margin="0,0,0,0" Orientation="Vertical" HorizontalAlignment="Left" Width="60">
                                         <Button Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Width="60">

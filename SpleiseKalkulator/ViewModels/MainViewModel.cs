@@ -85,8 +85,14 @@ namespace SpleiseKalkulator.ViewModels
             ItemViewModel a = new ItemViewModel();
             BitmapImage img = new BitmapImage();
             System.IO.Stream imageStream = contact.GetPicture();
-         
-            img.SetSource(imageStream);
+
+            if (imageStream == null)
+            {
+                img.SetSource(App.GetResourceStream(new Uri(@"Assets/AppBar/add.png", UriKind.Relative)).Stream);
+              
+            }
+            else
+                img.SetSource(imageStream);
             a.P = img;
             
             this.Items.Add(a);
