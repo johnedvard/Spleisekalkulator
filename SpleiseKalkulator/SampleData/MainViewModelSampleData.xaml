@@ -4,7 +4,7 @@
     xmlns:vm="clr-namespace:SpleiseKalkulator.ViewModels">
 
     <vm:MainViewModel.Items>
-        <vm:ItemViewModel P="/Assets/renata_profil.jpg"></vm:ItemViewModel>
+        <vm:ItemViewModel ProfileBitMap="/Assets/renata_profil.jpg" LineThree="hjkl"  Amount="345"></vm:ItemViewModel>
     </vm:MainViewModel.Items>
 </vm:MainViewModel>
    

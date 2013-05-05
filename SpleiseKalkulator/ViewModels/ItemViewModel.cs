@@ -10,11 +10,62 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 
 
-
 namespace SpleiseKalkulator.ViewModels
 {
     public class ItemViewModel : INotifyPropertyChanged
     {
+        [System.Runtime.Serialization.IgnoreDataMemberAttribute]
+        private Brush amountColor;
+        [System.Runtime.Serialization.IgnoreDataMemberAttribute]
+        public Brush AmountColor
+        {
+            get
+            {
+                return amountColor;
+            }
+            set
+            {
+                if (value != amountColor)
+                {
+                    amountColor = value;
+                    NotifyPropertyChanged("AmountColor");
+                }
+            }
+        }
+
+        private double amount;
+        public double Amount
+        {
+                get
+                {
+                    return amount;
+                }
+                set
+                {
+                if (value != amount)
+                {
+                    amount = value;
+                    if(amount >0)
+                    {
+                        AmountColor = new SolidColorBrush(Colors.Red);
+                    }
+                    else
+                    {
+                        AmountColor = new SolidColorBrush(new Color()
+                        {
+                            A = 255 /*Opacity*/,
+                            R = 0 /*Red*/,
+                            G = 255 /*Green*/,
+                            B = 0 /*Blue*/
+                        });
+                    }
+                    NotifyPropertyChanged("Amount");
+                }
+            }
+        }
+
+
+
         private string _lineOne;
         /// <summary>
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
@@ -98,12 +149,17 @@ namespace SpleiseKalkulator.ViewModels
                 }
             }
         }
+        // won't store this in the isolated storage.
+        [System.Runtime.Serialization.IgnoreDataMemberAttribute]
         private BitmapImage _p = null;
         /// <summary>
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
         /// </summary>
         /// <returns></returns>
-        public BitmapImage P
+        /// 
+        
+        [System.Runtime.Serialization.IgnoreDataMemberAttribute]
+        public BitmapImage ProfileBitMap
         {
             get
             {
@@ -114,7 +170,7 @@ namespace SpleiseKalkulator.ViewModels
                 if (value != _p)
                 {
                     _p = value;
-                   //NotifyPropertyChanged("PUUU");
+                    NotifyPropertyChanged("ProfileBitMap");
                 }
             }
         }

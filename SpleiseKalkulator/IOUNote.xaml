@@ -27,6 +27,7 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <Grid Grid.Row="0">
+            
             <Grid.RowDefinitions >
                 <RowDefinition Height="80" /> <!-- I O U row-->
                 <RowDefinition Height="50" /> <!-- empty row, just for spacing -->
@@ -46,8 +47,8 @@
                     <ImageBrush ImageSource="{Binding IPic}" />
                 </StackPanel.Background>
             </StackPanel>
-            <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" FontSize="30" Text="Amount"></TextBlock>
-            <TextBox InputScope="Digits" Grid.Column="1" Grid.Row="2" Height="80">
+            <TextBlock  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" FontSize="30" Text="Amount"></TextBlock>
+            <TextBox Name="Money" InputScope="Digits" Grid.Column="1" Grid.Row="2" Height="80">
                 
             </TextBox>
             <StackPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" Width="100" Height="100">
@@ -56,6 +57,9 @@
                 </StackPanel.Background>
             </StackPanel>
             
+            <Button Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="center" Width="auto" Height="auto" Name="ok" Click="ok_Click_1">
+                <TextBlock HorizontalAlignment="Center"  VerticalAlignment="Center" Text="OK" FontSize="40"></TextBlock>
+            </Button>
         </Grid>
         
         <!--ContentPanel - place additional content here-->
@@ -66,11 +70,9 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <TextBlock FontSize="30" HorizontalAlignment="Center" Text="Description" Grid.Row="0" ></TextBlock>
-            <TextBox Text="" Grid.Row="1"></TextBox>
-            <Button Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="center" Width="auto" Height="auto" Name="ok">
-                <TextBlock HorizontalAlignment="Center"  VerticalAlignment="Center" Text="OK" FontSize="40"></TextBlock>
-            </Button>
+            <!--<TextBlock FontSize="30" HorizontalAlignment="Center" Text="Description" Grid.Row="0" ></TextBlock>-->
+            <!--<TextBox Text="" Grid.Row="1"></TextBox>-->
+            
         </Grid>
     </Grid>
 

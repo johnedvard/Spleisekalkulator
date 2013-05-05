@@ -51,7 +51,8 @@ namespace SpleiseKalkulator
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
-           
+
+            App.ViewModel.saveData();
             base.OnBackKeyPress(e);
 
         }
@@ -83,25 +84,43 @@ namespace SpleiseKalkulator
 
         }
 
-        private void Button_Click_OweMe(object sender, RoutedEventArgs e)
+        private void Button_Click_Add(object sender, RoutedEventArgs e)
         {
             ViewModels.ItemViewModel data = (sender as Button).DataContext as ViewModels.ItemViewModel;
-            DataContainer.UPic = data.P;
+            DataContainer.UPic = data.ProfileBitMap;
             DataContainer.IPic =  null;
+            DataContainer.itemViewModel = data;
+            DataContainer.multiplier = 1;
             this.NavigationService.Navigate(new Uri(iouNotePage, UriKind.Relative));
         }
 
             
         
-        private void Button_Click_IOwe(object sender, RoutedEventArgs e)
+        private void Button_Click_Minus(object sender, RoutedEventArgs e)
         {
 
-            ViewModels.ItemViewModel data = (sender as Button).DataContext as ViewModels.ItemViewModel; ;
+            ViewModels.ItemViewModel data = (sender as Button).DataContext as ViewModels.ItemViewModel;
             DataContainer.UPic = null;
-            DataContainer.IPic = data.P;
-            
+            DataContainer.IPic = data.ProfileBitMap;
+            DataContainer.itemViewModel = data;
+            DataContainer.multiplier = -1;
             this.NavigationService.Navigate(new Uri(iouNotePage, UriKind.Relative));
             
+        }
+
+        private void StackPanel_Hold_1(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+
+            ViewModels.ItemViewModel data = (sender as StackPanel).DataContext as ViewModels.ItemViewModel;
+           
+            MessageBoxResult result = MessageBox.Show("Would you like to remove: " + data.LineOne +"?", "Remove: " + data.LineOne, MessageBoxButton.OKCancel);
+
+            if (result == MessageBoxResult.OK)
+            {
+                 App.ViewModel.Items.Remove(data);
+            }
+
+           
         }
     }
 }

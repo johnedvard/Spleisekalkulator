@@ -61,34 +61,70 @@
                     </phone:LongListSelector.ListHeaderTemplate>
                     <phone:LongListSelector.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="2,2,0,4">
-                                <!--Replace rectangle with image-->
-                                <StackPanel Width="100" Height="100" HorizontalAlignment="Left">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="130"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"></ColumnDefinition>
+                                    <ColumnDefinition Width="110"></ColumnDefinition>
+                                    <ColumnDefinition Width="100"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Text="I" FontSize="60" FontFamily="Verdana"></TextBlock>
+                                <TextBlock HorizontalAlignment="Center" Grid.Column="1" Text="O" FontSize="25"></TextBlock>
+                                <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="U" FontSize="25"></TextBlock>
+                                <!--<Rectangle Grid.Column="1" Fill="Gray" Width="90" Height="33"/>-->
+
+                                <TextBlock FontSize="25" Grid.Column="1"  HorizontalAlignment="Center"  VerticalAlignment="Center" Text="{Binding Amount}"  Foreground="{Binding AmountColor}"></TextBlock>
+                                    <Button  Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click_Minus" Height="70" >
+                                    <TextBlock Text="Give $"></TextBlock>
+                                    </Button>
+                                <Button  Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="Button_Click_Add" Height="70" >
+                                    <TextBlock Text="Take $">
+                                        
+                                    </TextBlock>
+                                </Button>
+
+                                <StackPanel VerticalAlignment="Bottom" Grid.Column="2" Width="100" Height="100" HorizontalAlignment="Left" Hold="StackPanel_Hold_1">
                                     <StackPanel.Background>
-                                        <ImageBrush ImageSource="{Binding P}" />
+                                        <ImageBrush ImageSource="{Binding ProfileBitMap}" />
                                     </StackPanel.Background>
                                 </StackPanel>
-                                <!-- <Image Name="P" Source="{Binding ProfilePicture}" Width="100" Height="100" HorizontalAlignment="Left"/>  -->
-                                
+
+
+
+
+
+                                <!--<StackPanel Orientation="Horizontal" Margin="2,2,0,4">
+                                    
+                                    <StackPanel Width="100" Height="100" HorizontalAlignment="Left" Hold="StackPanel_Hold_1">
+                                        <StackPanel.Background>
+
+                                            <ImageBrush ImageSource="{Binding ProfileBitMap}" />
+                                        </StackPanel.Background>
+                                    </StackPanel>
                                     <StackPanel Margin="1,0,0,10" Orientation="Horizontal">
                                         <StackPanel Margin="8,8,0,0" HorizontalAlignment="Left">
-                                            <TextBlock Text="Owe me" TextWrapping="Wrap" Margin="10,0,10,15" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize='30' FontFamily="Buxton Sketch" HorizontalAlignment="Left" />
+                                            <TextBlock Text="Owes me" TextWrapping="Wrap" Margin="10,0,10,15" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize='30' FontFamily="Buxton Sketch" HorizontalAlignment="Left" />
                                             <TextBlock Text="I owe " TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize='30' FontFamily="Buxton Sketch" HorizontalAlignment="Left" />
-                                         </StackPanel>
-                                    <StackPanel Margin="0,0,0,0" Orientation="Vertical" HorizontalAlignment="Left" Width="60">
-                                        <Button Click="Button_Click_OweMe" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Width="60">
-                                            <Image Source="/Assets/AppBar/add.png" />
-                                        </Button>
-                                        <Button Click="Button_Click_IOwe" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-8,0,0" Padding="0" Width="60" >
-                                            <Image Source="/Assets/AppBar/add.png" />
-                                        </Button>
+                                        </StackPanel>
+                                        <StackPanel Margin="0,0,0,0" Orientation="Vertical" HorizontalAlignment="Left" Width="60">
+                                            <Button Click="Button_Click_OweMe" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Width="60">
+                                                <Image Source="/Assets/AppBar/add.png" />
+                                            </Button>
+                                            <Button Click="Button_Click_IOwe" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-8,0,0" Padding="0" Width="60" >
+                                                <Image Source="/Assets/AppBar/add.png" />
+                                            </Button>
+                                        </StackPanel>
+                                        <StackPanel Margin="0" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                            <Rectangle Fill="#FFF9F9F9" Width="90" Margin="0,13,0,18" Height="33" />
+                                            <Rectangle Fill="#FFF9F9F9" Width="90" Margin="0" Height="33" />
+                                        </StackPanel>
                                     </StackPanel>
-                                    <StackPanel Margin="0" HorizontalAlignment="Right" VerticalAlignment="Top">
-                                        <Rectangle Fill="#FFF9F9F9" Width="90" Margin="0,13,0,18" Height="33" />
-                                        <Rectangle Fill="#FFF9F9F9" Width="90" Margin="0" Height="33" />
-                                    </StackPanel>
-                                </StackPanel>
-                            </StackPanel>
+                                </StackPanel>-->
+                            </Grid>
                         </DataTemplate>
                     </phone:LongListSelector.ItemTemplate>
                 </phone:LongListSelector>
