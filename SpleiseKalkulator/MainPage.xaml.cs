@@ -18,7 +18,6 @@ namespace SpleiseKalkulator
     {
         
 
-        private Contact currentContact = null;
         private string addContactsPage = "/AddContactPage.xaml";
         private string iouNotePage = "/IOUNote.xaml";
 
@@ -36,15 +35,12 @@ namespace SpleiseKalkulator
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if(currentContact != DataContainer.contact){
-                currentContact = DataContainer.contact;
-                App.ViewModel.AddPerson(currentContact);
-                
-            }
+            
             if (!App.ViewModel.IsDataLoaded)
             {
                 App.ViewModel.LoadData();
             }
+         
 
             
         }
@@ -112,13 +108,35 @@ namespace SpleiseKalkulator
         {
 
             ViewModels.ItemViewModel data = (sender as StackPanel).DataContext as ViewModels.ItemViewModel;
-           
-            MessageBoxResult result = MessageBox.Show("Would you like to remove: " + data.LineOne +"?", "Remove: " + data.LineOne, MessageBoxButton.OKCancel);
 
+
+            MessageBoxResult result = MessageBox.Show("Would you like to remove: " + data.LineOne +"?", "Remove: " + data.LineOne, MessageBoxButton.OKCancel);
             if (result == MessageBoxResult.OK)
             {
-                 App.ViewModel.Items.Remove(data);
+
+
+                if ( data != null && App.ViewModel.Items.Contains(data))
+                {
+                    try
+                    {
+                        App.ViewModel.Items.Remove(data);
+                        App.ViewModel.saveData();
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show(error.ToString());
+                       
+                    }
+                        
+                    
+                   
+                    
+                    
+                    
+                }
+              
             }
+            App.ViewModel.HelpText = "press the \"+\" button to add people you owe or owe you.";
 
            
         }

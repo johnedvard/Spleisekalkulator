@@ -20,7 +20,7 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <phone:Panorama Title="IOUs">
+        <phone:Panorama Title="IOU" FontSize="30">
             <phone:Panorama.Background>
                 <ImageBrush ImageSource="/SpleiseKalkulator;component/Assets/PanoramaBackground.png"/>
             </phone:Panorama.Background>

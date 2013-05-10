@@ -6,6 +6,7 @@ using Microsoft.Phone.UserData;
 using System.Windows.Media.Imaging;
 using System.IO.IsolatedStorage;
 using System.Collections.Generic;
+
 using System.IO;
 using System.Windows.Resources;
 using Microsoft.Xna.Framework.Media;
@@ -45,6 +46,24 @@ namespace SpleiseKalkulator.ViewModels
                     _sampleProperty = value;
                     NotifyPropertyChanged("SampleProperty");
                 }
+            }
+        }
+
+        private string helpText = "press the \"+\" button to add people you owe or owe you.";
+        public string HelpText
+        {
+            get
+            {
+                if (Items.Count > 0)
+                {
+                    return "";
+                }
+                return helpText;
+            }
+            set
+            {
+                    helpText = value;
+                    NotifyPropertyChanged("HelpText");
             }
         }
 
@@ -201,7 +220,7 @@ namespace SpleiseKalkulator.ViewModels
           
        }
 
-        public void AddPerson(Contact contact)
+        public bool AddPerson(Contact contact)
         {
             ItemViewModel a = new ItemViewModel();
             
@@ -218,8 +237,25 @@ namespace SpleiseKalkulator.ViewModels
             a.ProfileBitMap = img;
             a.LineOne = contact.DisplayName;
             SaveToJpeg(imageStream, contact.DisplayName + ".jpg");
+
+            // set name to be displayed in GUI
+            string name = contact.DisplayName;
+            if(name.Length >= 9){
+                name = name.Substring(0,9);
+            }
+            a.Name = name;
+            a.Amount = 0;
+            a.LineTwo = "I am in dept to";
+            // check if the item exists.
+            foreach(ItemViewModel item in Items)
+            {
+                if (item.LineOne.Equals(a.LineOne))
+                {
+                    return false;
+                }
+            }
             this.Items.Add(a);
-           
+            return true;
 
         }
 

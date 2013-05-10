@@ -32,12 +32,13 @@ namespace SpleiseKalkulator.ViewModels
                 }
             }
         }
-
+        
         private double amount;
         public double Amount
         {
                 get
                 {
+
                     return amount;
                 }
                 set
@@ -48,6 +49,7 @@ namespace SpleiseKalkulator.ViewModels
                     if(amount >0)
                     {
                         AmountColor = new SolidColorBrush(Colors.Red);
+                        LineTwo = "I am in dept to";
                     }
                     else
                     {
@@ -58,12 +60,46 @@ namespace SpleiseKalkulator.ViewModels
                             G = 255 /*Green*/,
                             B = 0 /*Blue*/
                         });
+                        LineTwo = "Is in dept to me";
                     }
                     NotifyPropertyChanged("Amount");
+                    NotifyPropertyChanged("AmountAsString");
                 }
             }
         }
 
+        public string AmountAsString
+        {
+            get
+            {
+                if (Amount < 0)
+                {
+                    string n = amount.ToString();
+                    return n.Substring(1, n.Length-1);
+                }
+                else
+                {
+                    return amount.ToString();
+                }
+                
+            }
+        }
+
+        private string name;
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                if (value != name)
+                {
+                    name = value;
+                }
+            }
+        }
 
 
         private string _lineOne;
@@ -83,6 +119,7 @@ namespace SpleiseKalkulator.ViewModels
                 {
                     _lineOne = value;
                     NotifyPropertyChanged("LineOne");
+                  
                 }
             }
         }

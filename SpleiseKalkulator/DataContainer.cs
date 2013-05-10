@@ -11,7 +11,6 @@ namespace SpleiseKalkulator
     class DataContainer
     {
 
-       public static Contact contact = null;
        public static BitmapImage UPic = null;
        public static BitmapImage IPic = null;
        public static int multiplier = 0;

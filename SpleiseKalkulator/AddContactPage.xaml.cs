@@ -67,9 +67,19 @@ namespace SpleiseKalkulator.ViewModels
         private void ContactResultsData_Tap_1(object sender, System.Windows.Input.GestureEventArgs e)
         {
             Contact c = (sender as ListBox).SelectedValue as Contact;
-            DataContainer.contact = c;
-             
-            NavigationService.GoBack();
+
+            if (!App.ViewModel.AddPerson(c))
+            {
+                MessageBox.Show(c.DisplayName+" is already added, please select another person or press the back button to go back");
+                
+            }
+            else
+            {
+                App.ViewModel.HelpText = "press the \"+\" button to add people you owe or owe you.";
+                App.ViewModel.saveData();
+
+                NavigationService.GoBack();
+            }
         }
       
 
