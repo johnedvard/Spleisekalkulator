@@ -2,14 +2,10 @@
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
   <App xmlns="" ProductID="{241ee157-84aa-4160-b1fc-9bf443349835}" Title="SpleiseKalkulator" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="SpleiseKalkulator author" Description="Sample description" Publisher="SpleiseKalkulator" PublisherID="{5e1fefb6-2a83-428d-bbe0-d8f2f4027448}">
-    <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
+    <IconPath IsRelative="true" IsResource="false">Assets\Icon_small.png</IconPath>
     <Capabilities>
-      <Capability Name="ID_CAP_NETWORKING" />
-      <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
-      <Capability Name="ID_CAP_MEDIALIB_PLAYBACK" />
-      <Capability Name="ID_CAP_SENSORS" />
-      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
       <Capability Name="ID_CAP_CONTACTS" />
+      <Capability Name="ID_CAP_SENSORS" />
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />
@@ -17,10 +13,10 @@
     <Tokens>
       <PrimaryToken TokenID="SpleiseKalkulatorToken" TaskName="_default">
         <TemplateFlip>
-          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
+          <SmallImageURI IsRelative="true" IsResource="false">Assets\Icon_small.png</SmallImageURI>
           <Count>0</Count>
-          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
-          <Title>SpleiseKalkulator</Title>
+          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Icon_small.png</BackgroundImageURI>
+          <Title>IOU</Title>
           <BackContent>
           </BackContent>
           <BackBackgroundImageURI>
@@ -29,8 +25,7 @@
           </BackTitle>
           <DeviceLockImageURI>
           </DeviceLockImageURI>
-          <HasLarge>
-          </HasLarge>
+          <HasLarge>False</HasLarge>
         </TemplateFlip>
       </PrimaryToken>
     </Tokens>

@@ -48,19 +48,26 @@ namespace SpleiseKalkulator.ViewModels
                     amount = value;
                     if(amount >0)
                     {
-                        AmountColor = new SolidColorBrush(Colors.Red);
-                        LineTwo = "I am in dept to";
+                        AmountColor = new SolidColorBrush(new Color()
+                        {
+                            A = 255 /*Opacity*/,
+                            R = 255 /*Red*/,
+                            G = 3 /*Green*/,
+                            B = 3 /*Blue*/
+                        });
+                        LineTwo = "I am in dept to: ";
                     }
                     else
                     {
                         AmountColor = new SolidColorBrush(new Color()
                         {
+                           
                             A = 255 /*Opacity*/,
                             R = 0 /*Red*/,
                             G = 255 /*Green*/,
-                            B = 0 /*Blue*/
+                            B = 9 /*Blue*/
                         });
-                        LineTwo = "Is in dept to me";
+                        LineTwo = "Is in dept to me: ";
                     }
                     NotifyPropertyChanged("Amount");
                     NotifyPropertyChanged("AmountAsString");
@@ -85,6 +92,24 @@ namespace SpleiseKalkulator.ViewModels
             }
         }
 
+        private string bgColor;
+        public string BgColor
+        {
+            get
+            {
+                return bgColor;
+            }
+            set
+            {
+                if (value != bgColor)
+                {
+                    bgColor = value;
+                    NotifyPropertyChanged("BgColor");
+
+                }
+            }
+        }
+
         private string name;
         public string Name
         {
@@ -97,6 +122,7 @@ namespace SpleiseKalkulator.ViewModels
                 if (value != name)
                 {
                     name = value;
+                    NotifyPropertyChanged("Name");
                 }
             }
         }
@@ -212,6 +238,30 @@ namespace SpleiseKalkulator.ViewModels
             }
         }
 
+        [System.Runtime.Serialization.IgnoreDataMemberAttribute]
+        private BitmapImage _pp = null;
+        /// <summary>
+        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+        /// </summary>
+        /// <returns></returns>
+        /// 
+
+        [System.Runtime.Serialization.IgnoreDataMemberAttribute]
+        public BitmapImage PicOfMyself
+        {
+            get
+            {
+                return _pp;
+            }
+            set
+            {
+                if (value != _pp)
+                {
+                    _pp = value;
+                    NotifyPropertyChanged("PicOfMyself");
+                }
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {

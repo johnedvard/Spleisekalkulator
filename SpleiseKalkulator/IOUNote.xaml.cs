@@ -20,12 +20,14 @@ namespace SpleiseKalkulator
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            
                 App.IOUNoteViewModel.IPic = DataContainer.IPic;   
                 App.IOUNoteViewModel.UPic = DataContainer.UPic;
   
         }
-
+        private void SearchTextBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            (sender as TextBox).Focus();
+        }
         private void ok_Click_1(object sender, RoutedEventArgs e)
         {
             if (Money.Text.Equals("")) Money.Text = "0";

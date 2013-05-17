@@ -9,7 +9,10 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Phone.UserData;
 using System.Windows.Media.Imaging;
+using Microsoft.Phone.Tasks;
 
+
+// color template gotten from http://www.colourlovers.com/palette/855571/Clouds_Over_Castle 
 namespace SpleiseKalkulator
 {
 
@@ -84,7 +87,7 @@ namespace SpleiseKalkulator
         {
             ViewModels.ItemViewModel data = (sender as Button).DataContext as ViewModels.ItemViewModel;
             DataContainer.UPic = data.ProfileBitMap;
-            DataContainer.IPic =  null;
+            DataContainer.IPic = App.ViewModel.PicOfMyself;
             DataContainer.itemViewModel = data;
             DataContainer.multiplier = 1;
             this.NavigationService.Navigate(new Uri(iouNotePage, UriKind.Relative));
@@ -96,7 +99,7 @@ namespace SpleiseKalkulator
         {
 
             ViewModels.ItemViewModel data = (sender as Button).DataContext as ViewModels.ItemViewModel;
-            DataContainer.UPic = null;
+            DataContainer.UPic = App.ViewModel.PicOfMyself;
             DataContainer.IPic = data.ProfileBitMap;
             DataContainer.itemViewModel = data;
             DataContainer.multiplier = -1;
@@ -113,32 +116,56 @@ namespace SpleiseKalkulator
             MessageBoxResult result = MessageBox.Show("Would you like to remove: " + data.LineOne +"?", "Remove: " + data.LineOne, MessageBoxButton.OKCancel);
             if (result == MessageBoxResult.OK)
             {
-
-
                 if ( data != null && App.ViewModel.Items.Contains(data))
                 {
                     try
                     {
                         App.ViewModel.Items.Remove(data);
                         App.ViewModel.saveData();
+                        App.ViewModel.UpdateBgColors();
                     }
                     catch (Exception error)
                     {
                         MessageBox.Show(error.ToString());
                        
                     }
-                        
-                    
-                   
-                    
-                    
-                    
                 }
               
             }
-            App.ViewModel.HelpText = "press the \"+\" button to add people you owe or owe you.";
+            App.ViewModel.HelpText = "Press the \"+\" button to add people you wish to borrow money from or lend money to.";
+        }
 
-           
+        private void StackPanel_Tap_1(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            PhotoChooserTask photo = new PhotoChooserTask();
+            photo.Completed += new EventHandler<PhotoResult>(photoChooserTask_Completed);
+            
+            photo.ShowCamera = true;
+            photo.Show();
+        }
+
+        void photoChooserTask_Completed(object sender, PhotoResult e)
+        {
+            if (e.TaskResult == TaskResult.OK)
+            {
+                BitmapImage img = new BitmapImage();
+                System.IO.Stream imageStream = e.ChosenPhoto;
+                if (imageStream == null)
+                {
+                    img.SetSource(App.GetResourceStream(new Uri(@"Assets/AppBar/questionmark.png", UriKind.Relative)).Stream);
+
+                }
+                else
+                    img.SetSource(imageStream);
+                App.ViewModel.PicOfMyself = img;
+                App.ViewModel.SaveToJpeg(imageStream, "PicOfMyself.jpg");
+
+
+                //Code to display the photo on the page in an image control named myImage.
+                //System.Windows.Media.Imaging.BitmapImage bmp = new System.Windows.Media.Imaging.BitmapImage();
+                //bmp.SetSource(e.ChosenPhoto);
+                //myImage.Source = bmp;
+            }
         }
     }
 }

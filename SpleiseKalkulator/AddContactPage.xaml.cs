@@ -11,7 +11,6 @@ using Microsoft.Phone.Shell;
 using Microsoft.Phone.UserData;
 
 
-
 namespace SpleiseKalkulator.ViewModels
 {
     public partial class AddContactPage : PhoneApplicationPage
@@ -67,7 +66,6 @@ namespace SpleiseKalkulator.ViewModels
         private void ContactResultsData_Tap_1(object sender, System.Windows.Input.GestureEventArgs e)
         {
             Contact c = (sender as ListBox).SelectedValue as Contact;
-
             if (!App.ViewModel.AddPerson(c))
             {
                 MessageBox.Show(c.DisplayName+" is already added, please select another person or press the back button to go back");
@@ -75,7 +73,7 @@ namespace SpleiseKalkulator.ViewModels
             }
             else
             {
-                App.ViewModel.HelpText = "press the \"+\" button to add people you owe or owe you.";
+                App.ViewModel.HelpText = "Press the \"+\" button to add people you wish to borrow money from or lend money to.";
                 App.ViewModel.saveData();
 
                 NavigationService.GoBack();

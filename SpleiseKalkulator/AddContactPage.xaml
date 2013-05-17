@@ -19,29 +19,31 @@
     </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
-        <phone:Panorama Title="IOU" FontSize="30">
-            <phone:Panorama.Background>
-                <ImageBrush ImageSource="/SpleiseKalkulator;component/Assets/PanoramaBackground.png"/>
-            </phone:Panorama.Background>
-            <StackPanel Orientation="Vertical">
+    <Grid x:Name="LayoutRoot" Background="#FF4B7986" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+            
+        
 
-                <ListBox Grid.Row="1" Name="ContactResultsData" ItemsSource="{Binding}" Height="544" Margin="24,24,0,0" VerticalAlignment="Top" Tap="ContactResultsData_Tap_1">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" >
-                                <Border HorizontalAlignment="Left" >
-                                    <Image Source="{Binding Converter={StaticResource ContactPictureConverter}}" Width="100" Height="100" Stretch="Fill" />
-                                </Border>
-                                <TextBlock Name="ContactResults" Text="{Binding Path=DisplayName, Mode=OneWay}" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </StackPanel>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="IOU" FontSize="80" Foreground="#EDEBAE"></TextBlock>
+        </StackPanel>
+        <ListBox Grid.Row="1" Name="ContactResultsData" ItemsSource="{Binding}" Height="auto" Margin="24,24,0,0" Tap="ContactResultsData_Tap_1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" >
+                        <Border HorizontalAlignment="Left" >
+                            <Image Source="{Binding Converter={StaticResource ContactPictureConverter}}" Width="100" Height="100" Stretch="Fill" />
+                        </Border>
+                        <TextBlock Name="ContactResults" Text="{Binding Path=DisplayName, Mode=OneWay}" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+         
 
-
-        </phone:Panorama>
 
     </Grid>
 

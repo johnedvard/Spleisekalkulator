@@ -37,20 +37,21 @@
          -->
 
          <!--Panorama control-->
-        <phone:Panorama Title="IOU" >
-            <phone:Panorama.Background>
-                <ImageBrush ImageSource="/SpleiseKalkulator;component/Assets/PanoramaBackground.png"/>
-            </phone:Panorama.Background>
-                <phone:PanoramaItem>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="{Binding HelpText}" TextWrapping="Wrap">
-                        
-                    </TextBlock>
-                    <!--Double line list with image placeholder and text wrapping using a floating header that scrolls with the content-->
+        <Grid Background="#4B7986">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Text="IOU" FontSize="80" Foreground="#EDEBAE" Grid.Row="0"></TextBlock>
+            <TextBlock Grid.Row="1" Text="{Binding HelpText}" TextWrapping="Wrap" Foreground="#EDEBAE" Padding="0,0,0,10" />
+            <Grid  Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+               
+                <!--Double line list with image placeholder and text wrapping using a floating header that scrolls with the content-->
                 <phone:LongListSelector Grid.Row="1" ItemsSource="{Binding Items}" SelectionChanged="LongListSelector_SelectionChanged_1" HorizontalAlignment="Left" Width="442">
                     <phone:LongListSelector.ListHeaderTemplate>
                         <DataTemplate>
@@ -59,16 +60,78 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
-                                <TextBlock Text="People"
-                                           Style="{StaticResource PanoramaItemHeaderTextStyle}"
-                                           Grid.Row="0"/>
                             </Grid>
                         </DataTemplate>
                     </phone:LongListSelector.ListHeaderTemplate>
                     <phone:LongListSelector.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Hold="StackPanel_Hold_1">
-                                <Grid>
+                            <StackPanel Hold="StackPanel_Hold_1" Width="auto" Background="{Binding BgColor}" Margin="0,0,0,10" HorizontalAlignment="Center" >
+                                <!--<StackPanel.Background>
+                                        <ImageBrush ImageSource="/Assets/paper_background_small.png" />
+                                    </StackPanel.Background>-->
+                                <Grid HorizontalAlignment="left">
+                                    <Grid.RowDefinitions >
+                                        <RowDefinition Height="40"></RowDefinition>
+                                        <RowDefinition Height="120"></RowDefinition>
+                                        <RowDefinition Height="auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="120"></ColumnDefinition>
+                                        <ColumnDefinition Width="170"></ColumnDefinition>
+                                        <ColumnDefinition Width="120"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="I" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="30" Foreground="#EDEBAE" ></TextBlock>
+                                    <TextBlock Grid.Column="1" Text="O" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="30" Foreground="#EDEBAE"></TextBlock>
+                                    <TextBlock Grid.Column="2" Text="U" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Verdana" FontSize="30" Foreground="#EDEBAE"></TextBlock>
+
+                                    <Grid Grid.Column="1" Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                            <Button  Click="Button_Click_Add"   Foreground="#EDEBAE" BorderBrush="#EDEBAE" FontSize="12" BorderThickness="2" >
+                                                <TextBlock Text="Take $"></TextBlock>
+                                            </Button>
+                                            <Button Grid.Row="1" Click="Button_Click_Minus"   Foreground="#EDEBAE" BorderBrush="#EDEBAE" FontSize="12" BorderThickness="2"  >
+                                                <TextBlock Text="Give $"></TextBlock>
+                                            </Button>
+                                        </StackPanel>
+                                        <TextBlock FontSize="25" Grid.Row="0"  HorizontalAlignment="Center"  VerticalAlignment="Center" Text="{Binding AmountAsString}"  Foreground="{Binding AmountColor}"></TextBlock>
+
+                                    </Grid>
+                                    
+                                    
+
+                                    <StackPanel VerticalAlignment="center" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" Width="100" Height="100"  Tap="StackPanel_Tap_1">
+                                        <StackPanel.Background>
+                                            <ImageBrush ImageSource="{Binding PicOfMyself}" Stretch="UniformToFill" />
+                                        </StackPanel.Background>
+                                    </StackPanel>
+                                    
+                                    
+                                    
+                                    
+                                    <StackPanel VerticalAlignment="center" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="2" Width="100" Height="100">
+                                        <StackPanel.Background>
+                                            <ImageBrush ImageSource="{Binding ProfileBitMap}" />
+                                        </StackPanel.Background>
+                                    </StackPanel>
+
+
+                                    <Border Grid.Row="2" Grid.ColumnSpan="3" Margin="10,0,10,0" BorderThickness="0,2,0,0" BorderBrush="#412C1B" >
+                                        <StackPanel Orientation="Horizontal" >
+                                            <TextBlock Text="{Binding LineTwo}" Foreground="#FF412C1B" Padding="0,0,2,0" ></TextBlock>
+                                            <TextBlock Text="{Binding LineOne}" Foreground="#EDEBAE" ></TextBlock>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <!--<StackPanel Hold="StackPanel_Hold_1" Width="auto">
+                                    <StackPanel.Background>
+                                        <ImageBrush ImageSource="/Assets/white_bg.jpg" Stretch="None" />
+                                    </StackPanel.Background>
+                                    <Grid>
                                     <Grid.RowDefinitions >
                                         <RowDefinition Height="130"></RowDefinition>
                                     </Grid.RowDefinitions>
@@ -82,15 +145,12 @@
                                     <TextBlock  Grid.Column="0" VerticalAlignment="Top" Text="{Binding LineTwo}" FontSize="20" FontFamily="Verdana" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="0,15,0,0"></TextBlock>
                                     <TextBlock   Grid.Column="0" Text="{Binding Name}" FontSize="20" VerticalAlignment="Bottom" Padding="0,0,0,20" TextWrapping="Wrap"></TextBlock>
                                     <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="Amount" FontSize="25"></TextBlock>
-                                    
-
-                                    <!--<Rectangle Grid.Column="1" Fill="Gray" Width="90" Height="33"/>-->
 
                                     <TextBlock FontSize="25" Grid.Column="2"  HorizontalAlignment="Center"  VerticalAlignment="Center" Text="{Binding AmountAsString}"  Foreground="{Binding AmountColor}"></TextBlock>
-                                        <Button  Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click_Minus" Height="70" >
+                                        <Button  Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click_Minus" Height="70" >
                                         <TextBlock Text="Give $"></TextBlock>
                                         </Button>
-                                    <Button  Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="Button_Click_Add" Height="70" >
+                                    <Button  Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Button_Click_Add" Height="70" >
                                         <TextBlock Text="Take $">
                                         
                                         </TextBlock>
@@ -100,7 +160,7 @@
                                         <StackPanel.Background>
                                             <ImageBrush ImageSource="{Binding ProfileBitMap}" />
                                         </StackPanel.Background>
-                                    </StackPanel>
+                                    </StackPanel>-->
 
 
 
@@ -138,9 +198,9 @@
                         </DataTemplate>
                     </phone:LongListSelector.ItemTemplate>
                 </phone:LongListSelector>
-                </Grid>
-            </phone:PanoramaItem>
-        </phone:Panorama>
+            </Grid>
+        </Grid>
+               
 
         <!--Uncomment to see an alignment grid to help ensure your controls are
             aligned on common boundaries.  The image has a top margin of -32px to

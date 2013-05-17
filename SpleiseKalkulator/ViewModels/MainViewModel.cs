@@ -110,10 +110,14 @@ namespace SpleiseKalkulator.ViewModels
                 }
                 else
                 {
+                    // ad the help text if there are no contacts added
+                    App.ViewModel.HelpText = "Press the \"+\" button to add people you wish to borrow money from or lend money to.";
+                    // set the profile pic to every person u have added to the list of IOUs
                     foreach(ItemViewModel i in liste)
                     {
                         BitmapImage bi = LoadImageFromIsolatedStorage(i.LineOne + ".jpg");
-                        
+                        // remove the help text if there are people added.
+                        App.ViewModel.HelpText = "";
                         if(bi == null)
                         {
                             bi = new BitmapImage();
@@ -121,6 +125,19 @@ namespace SpleiseKalkulator.ViewModels
                         }
                         i.ProfileBitMap = bi;
                         Items.Add(i);
+                    }
+
+                    // add the picture to the person who owns the phone
+                    BitmapImage ownProfilePic = LoadImageFromIsolatedStorage("PicOfMyself.jpg");
+                    if (ownProfilePic != null)
+                    {
+                        App.ViewModel.PicOfMyself = ownProfilePic;
+                    }
+                    else
+                    {
+                        ownProfilePic = new BitmapImage();
+                        ownProfilePic.SetSource(App.GetResourceStream(new Uri(@"Assets/AppBar/questionmark.png", UriKind.Relative)).Stream);
+                        App.ViewModel.PicOfMyself = ownProfilePic;
                     }
                 }
             
@@ -145,7 +162,7 @@ namespace SpleiseKalkulator.ViewModels
        }
 
 
-       private void SaveToJpeg(Stream stream, string strImageName)
+       public void SaveToJpeg(Stream stream, string strImageName)
        {
            using (IsolatedStorageFile iso = IsolatedStorageFile.GetUserStoreForApplication())
            {
@@ -220,6 +237,28 @@ namespace SpleiseKalkulator.ViewModels
           
        }
 
+       private BitmapImage picOfMyself;
+        public BitmapImage PicOfMyself
+        {
+            get
+            {
+                return picOfMyself;
+            }
+            set
+            {
+                if (value != picOfMyself)
+                {
+                    foreach (ItemViewModel item in Items)
+                    {
+                        item.PicOfMyself = value;
+                    }
+                    picOfMyself = value;
+                }
+
+            }
+        }
+
+        //returns false if the item already exists in the list
         public bool AddPerson(Contact contact)
         {
             ItemViewModel a = new ItemViewModel();
@@ -245,7 +284,7 @@ namespace SpleiseKalkulator.ViewModels
             }
             a.Name = name;
             a.Amount = 0;
-            a.LineTwo = "I am in dept to";
+            a.LineTwo = "I am in dept to: ";
             // check if the item exists.
             foreach(ItemViewModel item in Items)
             {
@@ -254,12 +293,43 @@ namespace SpleiseKalkulator.ViewModels
                     return false;
                 }
             }
+            // set different bg color of each item in the list.
+            if (Items.Count % 2 == 0)
+            {
+                a.BgColor = "#7FBCD8";
+            }
+            else
+            {
+                a.BgColor = "#568EB1";
+            }
+            // set own profilePic if it exists
+            if (PicOfMyself == null)
+            {
+                BitmapImage myPic = new BitmapImage();
+                myPic.SetSource(App.GetResourceStream(new Uri(@"Assets/AppBar/questionmark.png", UriKind.Relative)).Stream);
+                PicOfMyself = myPic;
+            }
+            a.PicOfMyself = PicOfMyself;
             this.Items.Add(a);
             return true;
 
         }
-
-
+        
+        public void UpdateBgColors()
+        {
+            int teller = 0;
+            foreach (ItemViewModel item in Items)
+            {
+                if (teller++ % 2 == 0)
+                {
+                    item.BgColor = "#7FBCD8";
+                }
+                else
+                {
+                    item.BgColor = "#568EB1";
+                }
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {
